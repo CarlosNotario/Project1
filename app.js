@@ -1,4 +1,4 @@
-//Problem: Hints are shown eve when form is valid
+/*/Problem: Hints are shown eve when form is valid
 //Solution: Hide and show them at appropriate times
 var $password = $("#password");
 var $confirmPassword = $("#confirm_password");
