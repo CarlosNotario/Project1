@@ -1,5 +1,8 @@
+.overlay {
+  background-color: lightblue;
 
-h3, h4, h5, h6 {
+}
+h2, h5, h6 {
   display:inline-block;
   float: right;
   margin: 0;
@@ -8,46 +11,221 @@ h3, h4, h5, h6 {
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
 /********nav******/
-a {
-    display: inline;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+
+
+
+    span {
+      z-index: 9999;
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      width: 35px;
+      height: 4px;
+      background: #ffffff;
+      cursor: pointer;
+
+      &:before, &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        left: 0;
+        height: 4px;
+        width: 35px;
+        background: #ffffff;
+      }
+
+      &:before {
+        top: -8px;
+      }
+
+      &:after {
+        bottom: -8px;
+      }
+    }
+
+    .title {
+      margin-top: 50px;
+      width: 50%;
+      margin-left: 25%;
+      text-align: center;
+
+      .h1 {
+        word-wrap: break-word;
+        color: white;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: -99%;
+      height: 100%;
+      background: #30C4C9;
+      left: 0;
+      width: 100%;
+      transition: all 0.5s ease;
+
+      &.anim {
+        left: 0;
+        bottom: 0;
+        animation: menu-anim 1.5s 1 ease-out normal;
+        width: 25%;
+        transition: all 0.5s ease;
+
+        &.reverse-anim {
+          left: 0;
+          bottom: 0;
+          animation: menu-anim 1.5s 1 ease-out reverse;
+          width: 25%;
+          transition: all 0.5s ease;
+        }
+      }
+
+      ul {
+        width: 100%;
+        text-align: center;
+        margin-top: 100px;
+        padding-left: 0;
+        margin-left: -10px;
+        font-size: 2em;
+        font-weight: 800;
+
+        li {
+          margin: 10px 0;
+
+          a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding: 10px 0;
+            overflow: hidden;
+
+            &:after {
+              display: block;
+              border-radius: 2px;
+              content: '';
+              left: 0;
+              bottom: -10px;
+              height: 5px;
+              background: #ffffff;
+              transform: translateX(-101%);
+            }
+
+            &:hover {
+              text-decoration: none;
+
+              &:after {
+                animation: border-anim 0.5s 1 ease normal;
+                transform: translateX(0);
+              }
+            }
+          }
+
+          @-webkit-keyframes border-anim {
+            0% {
+              transform: translateX(-100%);
+            }
+
+            100% {
+              transform: translateX(0);
+            }
+          }
+
+        }
+      }
+    }
+
+    @-webkit-keyframes menu-anim {
+
+      0% {
+        left: 0;
+        bottom: -99%;
+        width: 100%;
+      }
+
+      33% {
+        left: -99.5%;
+        bottom: -99%;
+        width: 100%;
+      }
+
+      66% {
+        left: -99.5%;
+        bottom: 0;
+        width: 100%;
+      }
+
+      100% {
+        bottom: 0;
+        left: 0;
+        width: 25%;
+      }
+    }
+  }
 }
 
 /*******video****/
+
+
 .secondary {
-  display: flex;
-  border: solid 1px red;
-  width:100%;
+    border: solid 1px red;
+    display: run-in;
 }
 
-video {
-  width: inherit;
-  margin-right: 5px;
-  margin-top:10px;
-  float: left;
-}
-h2 {
+.wrapper {
   width: 50%;
-  font-size: 16px;
-  float: right;
+  height: 50%;
+  background: #1D1313;
+  position:fixed;
+
+}
+
+ .h3 {
+  width: 100%;
+  font-size: 12px;
+  position: inherit;
+  padding: inherit;
+  word-wrap: normal;
+  overflow: inherit;
 }
 
 /* Media queries *****************/
-@media (max-width: 300px) {
-    html, body, nav {
-        background-color: green;
-				color: white;
+
+@media (max-width: 720px) {
+    .overlay {
+        background-color: yellow;
+				color: inherit;
+    }
+    .h3 {
+      word-wrap: normal;
+      width: auto;
+
     }
 }
 
-@media (max-width: 600px) {
-    html, body, nav {
-        background-color: yellow;
-				color: black;
+@media (max-width: 368px) {
+    .overlay {
+        background-color: green;
+				color: white;
+    }
+    .primary {
+      display: none;
     }
 }
-@media (min-width: 1000px) {
-    html, body, nav {
+
+/*@media (min-width: 1000px) {
+    .overlay {
         background-color: lightblue;
 				color: white;
     }
